@@ -9,6 +9,7 @@ Created on Tue Jul 14 09:12:42 2020
 
 import glob
 import numpy as np
+import h5py
 from core_functions_behavioral_analysis import read_data_txt
 from core_functions_behavioral_analysis import sort_data
 from core_functions_behavioral_analysis import quantify_data
@@ -17,11 +18,21 @@ from core_functions_behavioral_analysis import quantify_data
 
 # data folder, in the current configuration is in the same directory as this scrips
 
-dirPath = 'C:\\MATLAB_FOLDER\\Behavioral data analysis\\Exp_Data\\Example_data\\cylinders\\'
+dirPath = 'U:\\fromNeel\\'
+
+
+# uploading metadata from .mat file
+meta_data = h5py.File(glob.glob(dirPath + '*nw*.mat')[0])
+durMotion= meta_data['durMotion'][()]
+# stim_texture = h5py.File(glob.glob(dirPath + '*Seed*.mat')[0])
+# stim_texture= stim_texture['stimulus'][()]
+
+
+
+
 
 # here give a string identifier of the set of files you want to analyze
-
-files = glob.glob(dirPath + '*mk*.txt')
+files = glob.glob(dirPath + '*nw*.txt')
 N = len(files)
 
 #% some parameters
